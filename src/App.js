@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
-function App() {
+import Login from './components/Login';
+import Navbar from './layouts/Navbar';
+import Dashboard from './components/dashboard/Dashboard';
+
+import ModuleHeader from './components/modules/ModuleHeader';
+import DetailModule from './components/modules/DetailModule';
+
+import YearList from './components/student/YearList';
+
+export default function App() {
+  if (! JSON.parse(localStorage.getItem('id'))) {
+    return (
+      <>
+        <Router>
+          <Routes>
+              <Route path="/" element={<Login/>}/> 
+          </Routes>
+        </Router>
+      </>
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <div>
+    <Navbar/>
+    <Router>
+      <div>
+        <Routes>
+          {/* Route for students and marks*/}
+            <Route path="/dashboard" element={<Dashboard/>}/> 
+            <Route path="/mark" element={<YearList/>}/>     
+                   
+          {/* Route for  modules*/}
+            <Route path='/module' element={<ModuleHeader/>} />
+            <Route path='/detailModule/:id' element={<DetailModule/>} /> 
+
+        </Routes>
+      </div>
+    </Router>
+        </div>
   );
 }
-
-export default App;
