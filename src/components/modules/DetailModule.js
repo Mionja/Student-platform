@@ -21,37 +21,39 @@ function DetailModule() {
     }, [])
     
   return (
-    <div class="limiter">
-    <div class="container-login100" >
-        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-  { (isLoading) ? <p className="text-center h3">Please, wait a moment...<img src={loading}/></p>: 
-            <form class="login100-form validate-form">
-                <span class="login100-form-title p-b-49">
-                    Detail module
-                </span>
+    <div>
+      { (isLoading) ? <img src={loading} className="ml-5"/> : 
+        <div class="limiter">
+            <div class="container-login100" >
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-49">
+                            Detail module
+                        </span>
 
-                <div>
-                    <p>Name: {data.module.name}</p>
-                    <p>Code: {data.module.code}</p>
-                    <p>Hour: {data.module.hour}</p>
+                        <div>
+                            <p>Name: {data.module.name}</p>
+                            <p>Code: {data.module.code}</p>
+                            <p>Hour: {data.module.hour}</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <h5>List d'enseignant:</h5>
+                            {  
+                                data.module.teachers.map((t)=>{
+                                    return(
+                                        <p>{t.name}</p>
+                                    )
+                                }) 
+                            }
+                            
+                        </div>
+                        <a href="/module" className="btn btn-dark mt-5">Retour</a>
+                    </form>
                 </div>
-                <hr/>
-                <div>
-                    <h5>List of teachers:</h5>
-                    {  
-                        data.module.teachers.map((t)=>{
-                            return(
-                                <p>{t.name}</p>
-                            )
-                        }) 
-                    }
-                    
-                </div>
-                <a href="/module" className="btn btn-dark mt-5">Retour</a>
-            </form>
-  }
+            </div>
         </div>
-    </div>
+      }
     </div>
   )
 }

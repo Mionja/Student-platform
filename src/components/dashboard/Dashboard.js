@@ -63,25 +63,7 @@ function Dashboard() {
           </table>
       }
 
-    {/* Choosing the Academic year  */}
-      <div className='row mt-5'>
-            <div class="col-4"></div>
-            <ul class="pagination col-8">
-                <li class="page-item"><a class="page-link" href="#"
-                onClick={Previous}>Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#"
-                onClick={() => setYear(2019)}>2019</a></li>
-                <li class="page-item"><a class="page-link" href="#"
-                onClick={() => setYear(2020)}>2020</a></li>
-                <li class="page-item"><a class="page-link" href="#"
-                onClick={() => setYear(2021)}>2021</a></li>
-                <li class="page-item active"><a class="page-link" href="#"
-                    onClick={() => setYear(2022)}>2022</a></li>
-                <li class="page-item"><a class="page-link" href="#"
-                onClick={Next}>Next</a></li>
-            </ul>
-      </div>
-      <Graphs year={year} id={id}/>
+      <Graphs id={id}/>
     </div>
   )
 }
