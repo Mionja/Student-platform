@@ -2,18 +2,19 @@ import React , {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
 
-function Graphs(props) {
+function Graphs() {
+  const id = JSON.parse(localStorage.getItem('id'));
   let[data, setData] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/student/re-take-exam/${props.id}`)
+    axios.get(`http://localhost:8000/api/student/re-take-exam/${id}`)
     .then( res => {
         console.log(res.data);
         setTimeout(() => {
           setData(res.data);
           setIsLoading(false);
-        }, 3000);
+        }, 2000);
     })
 }, [])
   return (

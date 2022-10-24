@@ -22,6 +22,7 @@ function Navbar() {
     </ul>
     <a className="nav-link text-light" href="/module">Modules</a>
     <a className="nav-link text-light" href="/mark">Notes</a>
+    <a className="nav-link text-light" href="/re-take_exam">Rattrapages</a>
     <form className="form-inline my-2 my-lg-0" onSubmit={logout}>
       <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Se déconnecter</button>
     </form>

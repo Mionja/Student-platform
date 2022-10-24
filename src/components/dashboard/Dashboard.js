@@ -2,7 +2,8 @@ import React , {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
 import loading from './../../assets/loading.gif';
-import Graphs from './Graphs'
+import photo from './../../assets/photo.jpg';
+import email from './../../assets/email.png';
 
 function Dashboard() {
     const id = JSON.parse(localStorage.getItem('id'));
@@ -31,39 +32,51 @@ function Dashboard() {
     useEffect(() => {
       axios.get(`http://localhost:8000/api/student/${id}`)
       .then( res => {
-          console.log(res.data);
           setTimeout(() => {
+            console.log('grades', res.data.student.grades);
             setData(res.data);
             setIsLoading(false);
-          }, 3000);
+          }, 2000);
       })
   }, [])
 
 
   return (
     <div>
-      { (isLoading) ? <img src={loading} className="ml-5 img-fluid"/> : 
-        <table className='table table-info'>
-            <thead>
-              <th className="text-center">Nom</th>
-              <th className="text-center">Email</th>
-              <th className="text-center">Age</th>
-              <th className="text-center">Genre</th>
-            </thead>
-            <tbody>
-              <tr key={data.student.id}>
-                <td className="text-center">{data.student.name}</td>
-                <td className="text-center">{data.student.email}</td>
-                <td className="text-center">{data.student.age}</td>
-                <td className="text-center">
-                  { data.student.gender ==='M'? "Masculin": "Feminin" }
-                </td>
-              </tr>
-            </tbody>
-          </table>
-      }
+       <div className="container mt-3">
+          { (isLoading) ? <img src={loading} className="ml-5" width={150+'px'}/> : 
+          <>
+              <div className="media-body mt-3" style={{border:1+'px solid black', borderRadius:15+'px', backgroundColor:'gray'}}>
+                <div className="row">
+                  <img src={photo} alt="photo" class="mr-3 mt-3 rounded-circle col-5"/>
+                  <span className="col-1"></span>
+                  <h2 className="col-5 mt-5">{data.student.name}</h2>
+                </div>
 
-      <Graphs id={id}/>
+                <div className="row mt-5 mb-3">
+                <div className="col"></div>
+                    <div className="col">
+                      <img src={email} alt="email photo" 
+                      className="mr-2"/>
+                      {data.student.email}
+                      </div>
+                    <div className="col">Age: {data.student.age}</div>
+                    <div className="col">Genre: { data.student.gender ==='M'? "Masculin": "Feminin" }</div>
+                </div>
+              </div>
+
+              <div className="container mt-4">
+                <div className="row"> 
+                {data.student.grades.map(()=>{
+                  <div className="col border">
+                    test 
+                  </div>
+                })}
+                </div>
+              </div>
+          </>
+          }
+        </div>
     </div>
   )
 }
