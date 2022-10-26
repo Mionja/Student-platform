@@ -27,7 +27,18 @@ function Dashboard() {
   return (
     <div>
        <div className="container mt-3">
-          { (isLoading) ? <img src={loading} className="ml-5" width={150+'px'}/> : 
+          { (isLoading) ?  <p className="text-center h3">Attendez un instant...<div class="sk-cube-grid">
+                                    <div class="sk-cube sk-cube1"></div>
+                                    <div class="sk-cube sk-cube2"></div>
+                                    <div class="sk-cube sk-cube3"></div>
+                                    <div class="sk-cube sk-cube4"></div>
+                                    <div class="sk-cube sk-cube5"></div>
+                                    <div class="sk-cube sk-cube6"></div>
+                                    <div class="sk-cube sk-cube7"></div>
+                                    <div class="sk-cube sk-cube8"></div>
+                                    <div class="sk-cube sk-cube9"></div>
+                                    </div>
+                                </p>: 
           <>
               <div className="media-body mt-3" style={{border:1+'px solid black', borderRadius:15+'px', backgroundColor:'gray'}}>
                 <div className="row">

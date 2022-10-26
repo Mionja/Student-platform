@@ -30,7 +30,15 @@ function Login() {
         showConfirmButton: true,
       })
       navigate('/dashboard');
-    }        
+    }   
+    if (res.status === 200 ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        // text: 'Bad credentials!',
+        text:res.data.message
+      })
+    }     
 }
 
 
