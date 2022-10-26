@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import RDN from './RDN';
+import ListModule from './ListModule';
 
-function YearList() {
+function YearList(props) {
     let[year, setYear] = useState(2022);
     
     let Previous = ()=>{
@@ -15,7 +14,7 @@ function YearList() {
     }
 
     let Next = ()=>{
-        if (year <  2022) {
+        if (year <  2023) {
             setYear(year+1)   
         }
         else{
@@ -30,7 +29,8 @@ function YearList() {
                 <div className='col-8'>
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#"
-                        onClick={Previous}>Previous</a></li>
+                        onClick={Previous}>Previous</a></li> 
+                        
                         {
                             (year === 2020) ? 
                         <li className="page-item active"><a className="page-link" href="#"
@@ -66,13 +66,12 @@ function YearList() {
                         <li className="page-item"><a className="page-link" href="#"
                         onClick={() => setYear(2023)}>2023</a></li>
                         }
-    
                         <li class="page-item"><a class="page-link" href="#"
                         onClick={Next}>Next</a></li>
                     </ul>
                 </div>
         </div>
-        <RDN id={JSON.parse(localStorage.getItem('id'))} year={year}/>
+        <ListModule grade={props.grade} year={year}/>
     </>
   )
 }

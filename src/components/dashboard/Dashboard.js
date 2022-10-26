@@ -12,7 +12,7 @@ function Dashboard() {
     let [isLoading, setIsLoading] = useState(true);
 
     const Previous = ()=>{
-        if (year !==  2019) {
+        if (year !==  2020) {
             setYear(year-1)   
         }
         else{

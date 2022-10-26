@@ -6,10 +6,11 @@ import Navbar from './layouts/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
 import Graphs from './components/dashboard/Graphs';
 
-import ModuleHeader from './components/modules/ModuleHeader';
-import DetailModule from './components/modules/DetailModule';
+import ModuleHeader from './components/Module/ModuleHeader';
+import DetailModule from './components/Module/DetailModule';
 
 import YearList from './components/student/YearList';
+import SemesterMarks from './components/student/SemesterMarks';
 
 export default function App() {
   if (! JSON.parse(localStorage.getItem('id'))) {
@@ -34,11 +35,12 @@ export default function App() {
           {/* Route for students and marks*/}
             <Route path="/dashboard" element={<Dashboard/>}/> 
             <Route path="/mark" element={<YearList/>}/>  
-            <Route path="/re-take_exam" element={<Graphs/>}/>     
+            <Route path="/re-take_exam" element={<Graphs/>}/>  
+            <Route path="/RDN/semester/:semester/:year/:id" element={<SemesterMarks/>}/>        
                    
           {/* Route for  modules*/}
-            <Route path='/module' element={<ModuleHeader/>} />
-            <Route path='/detailModule/:id' element={<DetailModule/>} /> 
+            <Route path='/module' element={<ModuleHeader/>} /> 
+            <Route path='/detailModule/:id' element={<DetailModule/>} />
             /re-take_exam
         </Routes>
       </div>
