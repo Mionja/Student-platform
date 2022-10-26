@@ -7,27 +7,9 @@ import email from './../../assets/email.png';
 
 function Dashboard() {
     const id = JSON.parse(localStorage.getItem('id'));
-    let[year, setYear] = useState(2022);
     let[data, setData] = useState([]);
+    let[grades, setGrades] = useState([]);
     let [isLoading, setIsLoading] = useState(true);
-
-    const Previous = ()=>{
-        if (year !==  2020) {
-            setYear(year-1)   
-        }
-        else{
-            alert("Pas d'année scolaire correspondant");
-        }
-    }
-
-    const Next = ()=>{
-        if (year <  2022) {
-            setYear(year+1)   
-        }
-        else{
-            alert("Pas d'année scolaire correspondant");
-        }
-    }
 
     useEffect(() => {
       axios.get(`http://localhost:8000/api/student/${id}`)
@@ -35,6 +17,7 @@ function Dashboard() {
           setTimeout(() => {
             console.log('grades', res.data.student.grades);
             setData(res.data);
+            setGrades(res.data.student.grades)
             setIsLoading(false);
           }, 2000);
       })
@@ -67,11 +50,12 @@ function Dashboard() {
 
               <div className="container mt-4">
                 <div className="row"> 
-                {data.student.grades.map(()=>{
-                  <div className="col border">
-                    test 
-                  </div>
-                })}
+                  <div className="col">Test</div>
+                  {grades.map((grade)=>{
+                    <div className="col border">
+                      {grade.name} 
+                    </div>
+                  })}
                 </div>
               </div>
           </>
