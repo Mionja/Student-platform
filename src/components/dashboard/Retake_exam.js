@@ -2,7 +2,7 @@ import React , {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
 
-function Graphs() {
+function Retake_exam() {
   const id = JSON.parse(localStorage.getItem('id'));
   let[data, setData] = useState([]);
   let [isLoading, setIsLoading] = useState(true);
@@ -56,4 +56,4 @@ function Graphs() {
   )
 }
 
-export default Graphs
+export default Retake_exam
