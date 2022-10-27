@@ -41,7 +41,7 @@ export default function App() {
           {/* Route for  modules*/}
             <Route path='/module' element={<ModuleHeader/>} /> 
             <Route path='/detailModule/:id' element={<DetailModule/>} />
-            /re-take_exam
+            
         </Routes>
       </div>
     </Router>
