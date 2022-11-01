@@ -15,9 +15,10 @@ function Dashboard() {
       axios.get(`http://localhost:8000/api/student/${id}`)
       .then( res => {
           setTimeout(() => {
-            console.log('grades', res.data.student.grades);
+            console.log( res.data.student.grades);
             setData(res.data);
             setGrades(res.data.student.grades)
+            console.log('grades', grades);
             setIsLoading(false);
           }, 2000);
       })
@@ -25,8 +26,7 @@ function Dashboard() {
 
 
   return (
-    <div>
-       <div className="container mt-3">
+      <div className="container border mt-3" style={{border:1+'px solid black', borderRadius:15+'px', backgroundColor:'gray'}}>
           { (isLoading) ?  <p className="text-center h3">Attendez un instant...<div class="sk-cube-grid">
                                     <div class="sk-cube sk-cube1"></div>
                                     <div class="sk-cube sk-cube2"></div>
@@ -38,11 +38,11 @@ function Dashboard() {
                                     <div class="sk-cube sk-cube8"></div>
                                     <div class="sk-cube sk-cube9"></div>
                                     </div>
-                                </p>: 
-          <>
-              <div className="media-body mt-3" style={{border:1+'px solid black', borderRadius:15+'px', backgroundColor:'gray'}}>
+                                </p> : 
+              <div className="media-body mt-3">
                 <div className="row">
-                  <img src={photo} alt="photo" class="mr-3 mt-3 rounded-circle col-5"/>
+                  <img src={photo} alt="photo" class="mr-3 mt-3 rounded-circle col-5"
+                  style={{width:150+'px'}}/>
                   <span className="col-1"></span>
                   <h2 className="col-5 mt-5">{data.student.name}</h2>
                 </div>
@@ -57,21 +57,15 @@ function Dashboard() {
                     <div className="col">Age: {data.student.age}</div>
                     <div className="col">Genre: { data.student.gender ==='M'? "Masculin": "Feminin" }</div>
                 </div>
-              </div>
-
-              <div className="container mt-4">
-                <div className="row"> 
-                  <div className="col">Test</div>
-                  {grades.map((grade)=>{
-                    <div className="col border">
-                      {grade.name} 
-                    </div>
+                <div className="row mt-5 mb-3">
+                  {data.student.grades.map((grade)=>{
+                    <div className="col">Teeest</div>
+                    // <p>{grade.name}</p>
                   })}
                 </div>
               </div>
-          </>
           }
-        </div>
+
     </div>
   )
 }

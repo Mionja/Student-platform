@@ -29,12 +29,18 @@ function Retake_exam() {
           <th>Semestre</th>
         </thead>
         <tbody>
-          {isLoading ? 
-          <tr>
+          { (isLoading)?  
+          <tr className="text-center h3">
             <td></td>
             <td></td>
-            <td><code className="text-warning">Loading...</code></td>
-          </tr>
+            <td>
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+            </td>
+        </tr>
           :
           data.map((item)=>(
             <tr key={item.retake_exam.id}>

@@ -1,5 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+import './assets/admin/css/styles.css';
+import './assets/admin/js/scripts';
 
 import Login from './components/Login';
 import Navbar from './layouts/Navbar';
